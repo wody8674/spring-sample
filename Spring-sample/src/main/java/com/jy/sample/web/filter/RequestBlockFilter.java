@@ -14,7 +14,6 @@ import javax.servlet.ServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jy.sample.utils.ExceptionUtils;
 import com.jy.sample.utils.SystemUtils;
 
 /**
@@ -64,7 +63,7 @@ public class RequestBlockFilter implements Filter {
 			try {
 				this.config.loadFromXML(new FileInputStream(filterConfig.getServletContext().getRealPath("/") + configLocation));
 			} catch (Exception e) {
-				logger.error(ExceptionUtils.getStringStacktrace(e));
+				logger.error(SystemUtils.getStringStacktrace(e));
 				
 				this.config.setProperty(this.PROP_USE_BLOCK, SystemUtils.changeStrBoolean(this.useBlock));
 				this.config.setProperty(this.PROP_EXCLUDE_PATTERN, "");
