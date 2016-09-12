@@ -8,10 +8,10 @@ package com.jy.sample.utils;
 public class ExceptionUtils {
 	
 	/** Exception stacktrace 최대 출력 라인  */
-	public final static int STACKTRACE_MAX_LINE = 10;
+	private final static int STACKTRACE_MAX_LINE = 10;
 	
 	/** 개행 문자열 */
-	public final static String STR_LINE_FEED = "\r\n";
+	private final static String STR_LINE_FEED = "\r\n";
 	
 	/**
 	 * stacktrace 문자열을 지정된 라인수로 출력
