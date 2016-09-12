@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <!-- 블록 기능 사용여부 -->
+    <entry key="useBlock">false</entry>
+
+    <!--
+        연속 요청 차단 예외 URL 정보들.
+        콤마로 구분함.
+        startWith로 체크됨.
+    -->
+    <entry key="excludePattern">
+        /bo,
+        /api,
+        /chat,
+        /proxy.do
+    </entry>
+    
+    <!-- 연속요청 제한 시간 0.02초-->
+    <entry key="limitTime">20</entry>
+    
+    <!-- 제한에 걸렸을 경우 블롤할 시간 -->
+    <entry key="blockTime">5000</entry>
+    
+    <!-- 제한에 걸렸을 경우 에러코드와 메세지 -->
+    <entry key="blockResponseCode">999</entry>
+    <entry key="blockResponseMessage">request limit! wait 5 second!</entry>
+</properties>

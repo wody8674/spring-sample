@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    
+    <!-- Project Display name -->
+    <display-name>Spring sample</display-name>
+    
+    
+    <!-- 
+        컨테이너에서 app을 구분하기 위한 root key
+        System.getProperty("webapp.root")
+    -->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>spring.sample.root</param-value>
+    </context-param>
+    
+    <!--  로그 설정 log4j - 위치 -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/config/log4j.xml</param-value>
+    </context-param>
+    
+    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/root-context.xml</param-value>
+    </context-param>
+    
+    
+    <!-- UTF-8 인코딩 필터 설정 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- 요청 블록 조건 필터 -->
+    <filter>
+        <filter-name>requestBlockFilter</filter-name>
+        <filter-class>com.jy.sample.web.filter.RequestBlockFilter</filter-class>
+        <init-param>
+            <param-name>configLocation</param-name>
+            <param-value>/WEB-INF/config/request-block.xml</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestBlockFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.json</url-pattern>
+    </filter-mapping>
+    
+    
+    <!-- 로그 설정 log4j - Listener -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    
+    <!-- Creates the Spring Container shared by all Servlets and Filters -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    
+    <!-- Processes application requests -->
+    <servlet>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+        
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
