@@ -6,6 +6,10 @@ package com.jy.sample.constant;
  */
 public class SystemConstant {
 	
+	/**
+	 * 숫자 static
+	 * @author wody
+	 */
 	public final static class Number {
 		/** Number 0 */
 		public final static int ZERO = 0;
@@ -32,6 +36,17 @@ public class SystemConstant {
 		
 	}
 	
-	
+	/**
+	 * 세션 static
+	 * @author wody
+	 */
+	public final static class SESSION {
+		/** 최종 접근 시간 */
+		public final static String REQ_LAST_ACCESS_TIME = "reqLastAccessTime";
+		/** 블록 여부 */
+		public final static String REQ_USE_BLOCK = "reqBlcokYn";
+		/** 접근 uri */
+		public final static String REFERER = "referer";
+	}
 	
 }
